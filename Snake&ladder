@@ -1,0 +1,126 @@
+#include<iostream>
+#include<random>
+#include<string>
+#include<ctime>
+using namespace std;
+int snakebite()
+{
+	srand((time(0)));
+	int r = rand() % 10 + 1;
+	return r;
+}
+int snake(int score)
+{
+	if (score == 16 || score == 11 || score == 27 || score == 22 || score == 31 || score == 33 || score == 40 || score == 44 || score == 48 || score == 53 || score == 57 || score == 64 || score == 66 || score == 70 || score == 73 || score == 77 || score == 80 || score == 82 || score == 88 || score == 92 || score == 95 || score == 99) {
+		cout << "\nOH NO! SNAKE BITE YOU\n";
+		cout << "\n";
+		int minus = snakebite();
+		score = score - minus;
+		cout << "\nYOU FALLEN DOWN TO: " << score;
+		cout << "\n";
+	}
+	else if (score == 14 || score == 26 || score == 37 || score == 42 || score == 51 || score == 65 || score == 79 || score == 90) {
+		cout << "\nCONGO YOU GOT LADDER\n";
+		cout << "\n";
+		score = score + 10;
+		cout << "\nYes!!! YOU CLIMBED UP TO: " << score;
+		cout << "\n";
+	}
+	return score;
+}
+int roll()
+{
+	srand(((unsigned)time(0)));
+	int r = rand() % 6 + 1;
+	return r;
+}
+int main()
+{
+	cout << "\n**THERE ARE SOME CHANGES IN GAME TO MAKE IT DIFFICULT**\n";
+	cout << "\n**1.THERE ARE MORE NUMBER OF SNAKES AND THEY HAVE POWERBITE UPTO VALUE 10*\n*2.NOW LADDER HAVE CONSTANT VALUE TO CLIMB UP VALUE 10*\n*3.LESS NUMBER OF LADDER AND MORE NUMBER OF SNAKES*\n*4.THIS IS NOT PUBG SO YOU MAY FEEL THIS GAME BORING BUT THIS GAME IS CREATED FOR LEARNING PURPOSES**\n";
+	cout << "\nI HOPE YOU WILL ENJOY THE GAME\n";
+	int max_score = 100, p1_score = 0, p2_score = 0, r = 0, rolldice;
+	while (p1_score != 100 || p2_score != 100)
+	{
+		do
+		{
+			cout << "\nPLAYER 1 CHANCE TO ROLL THE DICE\n";
+			cout << "\n";
+			cout << "\nPRESS 1 TO ROLL THE DICE(PLAYER 1)\n";
+			int rolldice;
+			cin >> rolldice;
+
+			if (rolldice == 1) {
+				int r = roll();
+				cout << "\nNUMBER ON THE DICE: " << r << endl;
+				p1_score = p1_score + r;
+				if (p1_score == 100) {
+					cout << "\n		*\n";
+					cout << "\n     **\n";
+					cout << "\n  **\n";
+					cout << "\n*****\n";
+					cout << "\nCONGO YOU HAVE THE GAME\n";
+					cout << "\n";
+					cout << "\nPLAYER 1 WINS\n";
+					break;
+				}
+				p1_score = snake(p1_score);
+
+				cout << "\nPLAYER 1 NEW SCORE: " << p1_score << endl;
+				cout << "\n";
+			}
+			else {
+				cout << "\nAH!!! YOU MISSED THE CHANCE\n";
+				cout << "\n";
+				break;
+			}
+			if (r == 6) {
+				cout << "\nYEPIIIII: " << r << " " << "YOU GOT THE CHANCE TO ROLL THE DICE AGAIN\n";
+			}
+		} while (r == 6);
+		cout << "\n***********\n";
+		cout << "\n";
+
+		do
+		{
+			if (p1_score >= 100) {
+				break;
+			}
+			cout << "\nPLAYER 2 CHANCE TO ROLL THE DICE\n";
+			cout << "\n";
+			cout << "\nPLAYER 2 PRESS 2 TO ROLL THE DICE\n";
+			cin >> rolldice;
+			if (rolldice == 2) {
+				r = roll();
+				cout << "\nNUMBER ON DICE: " << r << endl;
+				cout << "\n";
+				p2_score = p2_score + r;
+				if (p2_score >= 100) {
+					cout << "\n		 *\n";
+					cout << "\n     **\n";
+					cout << "\n  **\n";
+					cout << "\n*****\n";
+					cout << "\nCONGO YOU HAVE THE GAME\n";
+					cout << "\n";
+					cout << "\nPLAYER 2 WIN\n";
+				}
+				p2_score = snake(p2_score);
+				cout << "\nYOUR NEW SCORE IS: " << p2_score << endl;
+			}
+			else {
+				cout << "\nAH! YOU MISSED THE CHANCE\n";
+				cout << "\n";
+				break;
+			}
+			if (r == 6) {
+				cout << "\nYEPIIIII: " << r << " " << "YOU GOT THE CHANCE TO ROLL THE DICE AGAIN\n";
+				cout << "\n";
+			}
+		} while (r == 6);
+		cout << "\n***********\n";
+		cout << "\n";
+		if (p2_score >= 100) {
+			break;
+		}
+	}
+}
